@@ -1,33 +1,29 @@
 {
 	"schemaVersion": 1,
-	"id": "modid",
+	"id": "shaketweaks",
 	"version": "${version}",
-	"name": "Example mod",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"name": "Shake Tweaks",
+	"description": "Small tweaks to the shake effect of the screen and hand!",
 	"authors": [
 		"Me!"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://github.com/MicrocontrollersDev/ShakeTweaks",
+		"sources": "https://github.com/MicrocontrollersDev/ShakeTweaks/issues"
 	},
-	"license": "CC0-1.0",
-	"icon": "assets/modid/icon.png",
+	"license": "LGPLV3",
+	"icon": "assets/shaketweaks/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.example.ExampleMod"
+			"dev.microcontrollers.shaketweaks.ShakeTweaks"
 		],
-		"client": [
-			"com.example.ExampleModClient"
+		"modmenu": [
+			"dev.microcontrollers.shaketweaks.config.ModMenuIntegration"
 		]
 	},
 	"mixins": [
-		"modid.mixins.json",
-		{
-			"config": "modid.client.mixins.json",
-			"environment": "client"
-		}
+		"shaketweaks.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.14.21",
