@@ -56,7 +56,7 @@ public class ShakeTweaksConfig {
                                 .build())
                         .option(Option.createBuilder(boolean.class)
                                 .name(Text.literal("Disable Screen Damage Tilt"))
-                                .description(OptionDescription.of(Text.of("Disables the hand shake when taking damage.")))
+                                .description(OptionDescription.of(Text.of("Disables the screen shake when taking damage.")))
                                 .binding(false, () -> disableScreenDamage, newVal -> disableScreenDamage = newVal)
                                 .controller(TickBoxControllerBuilder::create)
                                 .build())
