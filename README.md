@@ -1,9 +1,15 @@
-# Fabric Example Mod
+# Shake Tweaks
 
-## Setup
+A small QOL mod that lets you alter the game's shake mechanics for the screen and hand.
 
-For setup instructions please see the [fabric wiki page](https://fabricmc.net/wiki/tutorial:setup) that relates to the IDE that you are using.
+## Download
 
-## License
+Downloads can be found on the [Modrinth page](https://modrinth.com/mod/shaketweaks).
 
-This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
+### Features
+
+- Disable Screen Bobbing
+- Disable Hand Bobbing
+- Disable Map Bobbing
+- Disable Screen Damage Tilt
+- Disable Hand Damage Tilt
