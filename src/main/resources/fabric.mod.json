@@ -5,11 +5,12 @@
 	"name": "Shake Tweaks",
 	"description": "Small tweaks to the shake effect of the screen and hand!",
 	"authors": [
-		"Me!"
+		"Microcontrollers"
 	],
 	"contact": {
-		"homepage": "https://github.com/MicrocontrollersDev/ShakeTweaks",
-		"sources": "https://github.com/MicrocontrollersDev/ShakeTweaks/issues"
+		"homepage": "https://github.com/MicrocontrollersDev",
+		"sources": "https://github.com/MicrocontrollersDev/ShakeTweaks",
+		"issues": "https://github.com/MicrocontrollersDev/ShakeTweaks/issues"
 	},
 	"license": "LGPLV3",
 	"icon": "assets/shaketweaks/icon.png",
