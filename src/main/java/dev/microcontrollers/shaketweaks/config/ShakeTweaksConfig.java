@@ -11,25 +11,23 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
 
-import java.nio.file.Path;
-
 public class ShakeTweaksConfig {
-    public static GsonConfigInstance<dev.microcontrollers.shaketweaks.config.ShakeTweaksConfig> configInstance = new GsonConfigInstance<>(dev.microcontrollers.shaketweaks.config.ShakeTweaksConfig.class, Path.of(FabricLoader.getInstance().getConfigDir().toString(), "shaketweaks.json"));
+    public static GsonConfigInstance<ShakeTweaksConfig> configInstance = new GsonConfigInstance<>(ShakeTweaksConfig.class, FabricLoader.getInstance().getConfigDir().resolve("shaketweaks.json"));
 
     @ConfigEntry
-    public static boolean disableScreenBobbing;
+    public static boolean disableScreenBobbing = true;
 
     @ConfigEntry
-    public static boolean disableHandBobbing;
+    public static boolean disableHandBobbing = false;
 
     @ConfigEntry
-    public static boolean disableMapBobbing;
+    public static boolean disableMapBobbing = true;
 
     @ConfigEntry
-    public static boolean disableHandDamage;
+    public static boolean disableHandDamage = false;
 
     @ConfigEntry
-    public static boolean disableScreenDamage;
+    public static boolean disableScreenDamage = false;
 
     public static Screen configScreen(Screen parent) {
         return YetAnotherConfigLib.create(configInstance, ((defaults, config, builder) -> builder
@@ -39,7 +37,7 @@ public class ShakeTweaksConfig {
                         .option(Option.createBuilder(boolean.class)
                                 .name(Text.literal("Disable Screen Bobbing"))
                                 .description(OptionDescription.of(Text.of("Disables the screen shake when moving.")))
-                                .binding(false, () -> disableScreenBobbing, newVal -> disableScreenBobbing = newVal)
+                                .binding(true, () -> disableScreenBobbing, newVal -> disableScreenBobbing = newVal)
                                 .controller(TickBoxControllerBuilder::create)
                                 .build())
                         .option(Option.createBuilder(boolean.class)
@@ -51,7 +49,7 @@ public class ShakeTweaksConfig {
                         .option(Option.createBuilder(boolean.class)
                                 .name(Text.literal("Disable Map Bobbing"))
                                 .description(OptionDescription.of(Text.of("Disables the hand shake when holding a map.")))
-                                .binding(false, () -> disableMapBobbing, newVal -> disableMapBobbing = newVal)
+                                .binding(true, () -> disableMapBobbing, newVal -> disableMapBobbing = newVal)
                                 .controller(TickBoxControllerBuilder::create)
                                 .build())
                         .option(Option.createBuilder(boolean.class)
