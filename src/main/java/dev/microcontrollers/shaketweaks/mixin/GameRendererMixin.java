@@ -15,30 +15,32 @@ import org.spongepowered.asm.mixin.injection.At;
 public class GameRendererMixin {
     @WrapWithCondition(method = "renderWorld", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/GameRenderer;bobView(Lnet/minecraft/client/util/math/MatrixStack;F)V"))
     public boolean disableScreenBobbing(GameRenderer instance, MatrixStack matrices, float tickDelta) {
-        return !ShakeTweaksConfig.disableScreenBobbing;
+        return !ShakeTweaksConfig.INSTANCE.getConfig().disableScreenBobbing;
     }
 
     @WrapWithCondition(method = "renderHand", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/GameRenderer;bobView(Lnet/minecraft/client/util/math/MatrixStack;F)V"))
     public boolean disableHandBobbing(GameRenderer instance, MatrixStack matrices, float tickDelta) {
-        if (!ShakeTweaksConfig.disableMapBobbing) return !ShakeTweaksConfig.disableHandBobbing;
-        ClientPlayerEntity entity = MinecraftClient.getInstance().player;
-        if (entity != null) {
-            ItemStack mainHand = entity.getMainHandStack();
-            ItemStack offHand = entity.getOffHandStack();
-            if (mainHand != null && mainHand.getItem() instanceof FilledMapItem ) return false;
-            return offHand == null || !(offHand.getItem() instanceof FilledMapItem);
+        if (ShakeTweaksConfig.INSTANCE.getConfig().disableHandBobbing) return false;
+        if (ShakeTweaksConfig.INSTANCE.getConfig().disableMapBobbing) {
+            ClientPlayerEntity entity = MinecraftClient.getInstance().player;
+            if (entity != null) {
+                ItemStack mainHand = entity.getMainHandStack();
+                ItemStack offHand = entity.getOffHandStack();
+                if (mainHand != null && mainHand.getItem() instanceof FilledMapItem) return false;
+                return offHand == null || !(offHand.getItem() instanceof FilledMapItem);
+            }
         }
         return true;
     }
 
     @WrapWithCondition(method = "renderHand", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/GameRenderer;tiltViewWhenHurt(Lnet/minecraft/client/util/math/MatrixStack;F)V"))
     public boolean disableHandDamageTilt(GameRenderer instance, MatrixStack matrices, float tickDelta) {
-        return !ShakeTweaksConfig.disableHandDamage;
+        return !ShakeTweaksConfig.INSTANCE.getConfig().disableHandDamage;
     }
 
     @WrapWithCondition(method = "renderWorld", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/GameRenderer;tiltViewWhenHurt(Lnet/minecraft/client/util/math/MatrixStack;F)V"))
     public boolean disableScreenDamageTilt(GameRenderer instance, MatrixStack matrices, float tickDelta) {
-        return !ShakeTweaksConfig.disableScreenDamage;
+        return !ShakeTweaksConfig.INSTANCE.getConfig().disableScreenDamage;
     }
 
 }
